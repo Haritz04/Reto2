@@ -6,6 +6,7 @@ import java.util.Objects;
 public class Country {
 
 	private int    id   = 0;
+	private String aid  = null;
 	private String name = null;
 	
 	private ArrayList<City> cities = null;
@@ -16,6 +17,14 @@ public class Country {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getAid() {
+		return aid;
+	}
+
+	public void setAid(String aid) {
+		this.aid = aid;
 	}
 
 	public String getName() {
@@ -36,7 +45,7 @@ public class Country {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cities, id, name);
+		return Objects.hash(aid, cities, id, name);
 	}
 
 	@Override
@@ -48,12 +57,13 @@ public class Country {
 		if (getClass() != obj.getClass())
 			return false;
 		Country other = (Country) obj;
-		return Objects.equals(cities, other.cities) && id == other.id && Objects.equals(name, other.name);
+		return Objects.equals(aid, other.aid) && Objects.equals(cities, other.cities) && id == other.id
+				&& Objects.equals(name, other.name);
 	}
 
 	@Override
 	public String toString() {
-		return "Country [id=" + id + ", name=" + name + ", cities=" + cities + "]";
+		return "Country [id=" + id + ", aid=" + aid + ", name=" + name + ", cities=" + cities + "]";
 	}
 	
 }

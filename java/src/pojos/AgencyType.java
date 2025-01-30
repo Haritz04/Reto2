@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class AgencyType {
 	
 	private int     id   = 0;
+	private String  aid  = null;
 	private String  name = null;
 	
 	private ArrayList<Agency> agencies = null;
@@ -18,6 +19,14 @@ public class AgencyType {
 		this.id = id;
 	}
 
+	public String getAid() {
+		return aid;
+	}
+
+	public void setAid(String aid) {
+		this.aid = aid;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -26,17 +35,17 @@ public class AgencyType {
 		this.name = name;
 	}
 
-	public ArrayList<Agency> getagencies() {
+	public ArrayList<Agency> getAgencies() {
 		return agencies;
 	}
 
-	public void setagencies(ArrayList<Agency> agencies) {
+	public void setAgencies(ArrayList<Agency> agencies) {
 		this.agencies = agencies;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(agencies, id, name);
+		return Objects.hash(agencies, aid, id, name);
 	}
 
 	@Override
@@ -48,11 +57,13 @@ public class AgencyType {
 		if (getClass() != obj.getClass())
 			return false;
 		AgencyType other = (AgencyType) obj;
-		return Objects.equals(agencies, other.agencies) && id == other.id && Objects.equals(name, other.name);
+		return Objects.equals(agencies, other.agencies) && Objects.equals(aid, other.aid) && id == other.id
+				&& Objects.equals(name, other.name);
 	}
 
 	@Override
 	public String toString() {
-		return "AgencyType [id=" + id + ", name=" + name + ", agencies=" + agencies + "]";
+		return "AgencyType [id=" + id + ", aid=" + aid + ", name=" + name + ", agencies=" + agencies + "]";
 	}
+
 }

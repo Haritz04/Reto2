@@ -8,7 +8,6 @@ public class Airline {
 	private int     id   = 0;
 	private String  aid  = null;
 	private String  name = null;
-	private City    city = null;
 	
 	private ArrayList<Flight> flights = null;
 
@@ -17,12 +16,6 @@ public class Airline {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public City getCity() {
-		return city;
-	}
-	public void setCity(City city) {
-		this.city = city;
 	}
 	public String getAid() {
 		return aid;
@@ -44,7 +37,7 @@ public class Airline {
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(flights, aid, city, id, name);
+		return Objects.hash(flights, aid, id, name);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -56,11 +49,11 @@ public class Airline {
 			return false;
 		Airline other = (Airline) obj;
 		return Objects.equals(flights, other.flights) && Objects.equals(aid, other.aid)
-				&& Objects.equals(city, other.city) && id == other.id && Objects.equals(name, other.name);
+				&& id == other.id && Objects.equals(name, other.name);
 	}
 	@Override
 	public String toString() {
-		return "Airline [id=" + id + ", city=" + city + ", aid=" + aid + ", name=" + name + ", Flights=" + flights + "]";
+		return "Airline [id=" + id + ", aid=" + aid + ", name=" + name + ", Flights=" + flights + "]";
 	}
 
 }

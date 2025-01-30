@@ -1,23 +1,19 @@
 package pojos;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 public class Flight {
 
-	private int           id            = 0;
-	private int           duration      = 0;
-	private double        price         = 0.0;
-	private String        code          = null;
-	private Date          startDate     = null;
-	private Date          startHour     = null;
-	private Accommodation accommodation = null;
-	private Airport       airportStart  = null;
-	private Airport       airportEnd    = null;
-	private Airline       airline       = null;
-	private Other         other         = null;
-
-	private Flight        returnflight  = null;
+	private int       id           = 0;
+	private int       duration     = 0;
+	private double    price        = 0.0;
+	private String    code         = null;
+	private Airline   airline      = null;
+	private Timestamp startMoment  = null;
+	private Travel    travel       = null;
+	private Airport   airportStart = null;
+	private Airport   airportEnd   = null;
 
 	public int getId() {
 		return id;
@@ -51,28 +47,28 @@ public class Flight {
 		this.code = code;
 	}
 
-	public Date getStartDate() {
-		return startDate;
+	public Airline getAirline() {
+		return airline;
 	}
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+	public void setAirline(Airline airline) {
+		this.airline = airline;
 	}
 
-	public Date getStartHour() {
-		return startHour;
+	public Timestamp getStartMoment() {
+		return startMoment;
 	}
 
-	public void setStartHour(Date startHour) {
-		this.startHour = startHour;
+	public void setStartMoment(Timestamp startMoment) {
+		this.startMoment = startMoment;
 	}
 
-	public Accommodation getAccommodation() {
-		return accommodation;
+	public Travel getTravel() {
+		return travel;
 	}
 
-	public void setAccommodation(Accommodation accommodation) {
-		this.accommodation = accommodation;
+	public void setTravel(Travel travel) {
+		this.travel = travel;
 	}
 
 	public Airport getAirportStart() {
@@ -91,34 +87,9 @@ public class Flight {
 		this.airportEnd = airportEnd;
 	}
 
-	public Airline getAirline() {
-		return airline;
-	}
-
-	public void setAirline(Airline airline) {
-		this.airline = airline;
-	}
-
-	public Other getOther() {
-		return other;
-	}
-
-	public void setOther(Other other) {
-		this.other = other;
-	}
-
-	public Flight getReturnflight() {
-		return returnflight;
-	}
-
-	public void setReturnflight(Flight returnflight) {
-		this.returnflight = returnflight;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(accommodation, airline, airportEnd, airportStart, code, duration, id, other, price,
-				returnflight, startDate, startHour);
+		return Objects.hash(airline, airportEnd, airportStart, code, duration, id, price, startMoment, travel);
 	}
 
 	@Override
@@ -130,20 +101,18 @@ public class Flight {
 		if (getClass() != obj.getClass())
 			return false;
 		Flight other = (Flight) obj;
-		return Objects.equals(accommodation, other.accommodation) && Objects.equals(airline, other.airline)
-				&& Objects.equals(airportEnd, other.airportEnd) && Objects.equals(airportStart, other.airportStart)
-				&& Objects.equals(code, other.code) && duration == other.duration && id == other.id
-				&& Objects.equals(this.other, other.other)
+		return Objects.equals(airline, other.airline) && Objects.equals(airportEnd, other.airportEnd)
+				&& Objects.equals(airportStart, other.airportStart) && Objects.equals(code, other.code)
+				&& duration == other.duration && id == other.id
 				&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price)
-				&& Objects.equals(returnflight, other.returnflight) && Objects.equals(startDate, other.startDate)
-				&& Objects.equals(startHour, other.startHour);
+				&& Objects.equals(startMoment, other.startMoment) && Objects.equals(travel, other.travel);
 	}
 
 	@Override
 	public String toString() {
-		return "Flight [id=" + id + ", duration=" + duration + ", price=" + price + ", code=" + code + ", startDate="
-				+ startDate + ", startHour=" + startHour + ", accommodation=" + accommodation + ", airportStart="
-				+ airportStart + ", airportEnd=" + airportEnd + ", airline=" + airline + ", other=" + other
-				+ ", returnflight=" + returnflight + "]";
+		return "Flight [id=" + id + ", duration=" + duration + ", price=" + price + ", code=" + code + ", airline="
+				+ airline + ", startMoment=" + startMoment + ", travel=" + travel + ", airportStart=" + airportStart
+				+ ", airportEnd=" + airportEnd + "]";
 	}
+	
 }

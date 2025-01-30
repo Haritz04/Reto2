@@ -5,8 +5,9 @@ import java.util.Objects;
 
 public class RoomType {
 
-	private int     id   = 0;
-	private String  name = null;
+	private int    id   = 0;
+	private String aid  = null;
+	private String name = null;
 
 	private ArrayList<Accommodation> accommodations = null;
 
@@ -18,6 +19,14 @@ public class RoomType {
 		this.id = id;
 	}
 
+	public String getAid() {
+		return aid;
+	}
+
+	public void setAid(String aid) {
+		this.aid = aid;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -26,17 +35,17 @@ public class RoomType {
 		this.name = name;
 	}
 
-	public ArrayList<Accommodation> getAccommodationTrips() {
+	public ArrayList<Accommodation> getAccommodations() {
 		return accommodations;
 	}
 
-	public void setAccommodationTrips(ArrayList<Accommodation> accommodations) {
+	public void setAccommodations(ArrayList<Accommodation> accommodations) {
 		this.accommodations = accommodations;
 	}
-
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(accommodations, id, name);
+		return Objects.hash(accommodations, aid, id, name);
 	}
 
 	@Override
@@ -48,12 +57,13 @@ public class RoomType {
 		if (getClass() != obj.getClass())
 			return false;
 		RoomType other = (RoomType) obj;
-		return Objects.equals(accommodations, other.accommodations) && id == other.id
+		return Objects.equals(accommodations, other.accommodations) && Objects.equals(aid, other.aid) && id == other.id
 				&& Objects.equals(name, other.name);
 	}
 
 	@Override
 	public String toString() {
-		return "RoomType [id=" + id + ", name=" + name + ", accommodationTrips=" + accommodations + "]";
+		return "RoomType [id=" + id + ", aid=" + aid + ", name=" + name + ", accommodations=" + accommodations + "]";
 	}
+	
 }

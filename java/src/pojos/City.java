@@ -10,7 +10,7 @@ public class City {
 	private Country country = null;
 	
 	private ArrayList<Accommodation> accommodations = null;
-	private ArrayList<Airline>       airlines       = null;
+	private ArrayList<Airport>       airports       = null;
 	
 	public int getId() {
 		return id;
@@ -36,15 +36,15 @@ public class City {
 	public void setAccommodations(ArrayList<Accommodation> accommodations) {
 		this.accommodations = accommodations;
 	}
-	public ArrayList<Airline> getAirlines() {
-		return airlines;
+	public ArrayList<Airport> getAirports() {
+		return airports;
 	}
-	public void setAirlines(ArrayList<Airline> airlines) {
-		this.airlines = airlines;
+	public void setAirports(ArrayList<Airport> airports) {
+		this.airports = airports;
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(accommodations, airlines, id, name);
+		return Objects.hash(accommodations, airports, country, id, name);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -55,13 +55,13 @@ public class City {
 		if (getClass() != obj.getClass())
 			return false;
 		City other = (City) obj;
-		return Objects.equals(accommodations, other.accommodations) && Objects.equals(airlines, other.airlines)
-				&& id == other.id && Objects.equals(name, other.name);
+		return Objects.equals(accommodations, other.accommodations) && Objects.equals(airports, other.airports)
+				&& Objects.equals(country, other.country) && id == other.id && Objects.equals(name, other.name);
 	}
 	@Override
 	public String toString() {
-		return "City [id=" + id + ", name=" + name + ", accommodations=" + accommodations + ", airlines=" + airlines
-				+ "]";
+		return "City [id=" + id + ", name=" + name + ", country=" + country + ", accommodations=" + accommodations
+				+ ", airports=" + airports + "]";
 	}
 	
 }
