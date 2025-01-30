@@ -18,6 +18,7 @@ public class Travel {
 	private ArrayList<Flight>        flights             = null;
 	private ArrayList<Accommodation> accommodationTravel = null;
 	private ArrayList<Other>         others              = null;
+	
 	public int getId() {
 		return id;
 	}
