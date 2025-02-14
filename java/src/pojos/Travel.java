@@ -11,12 +11,12 @@ public class Travel {
 	private String     name                   = null;
 	private String     description            = null;
 	private String     descServiceNotIncluded = null;
-	private Date       tripDate               = null;
+	private Date       travelDate             = null;
 	private TravelType travelType             = null;
 	private Agency     agency                 = null;
 
 	private ArrayList<Flight>        flights             = null;
-	private ArrayList<Accommodation> accommodationTravel = null;
+	private ArrayList<Accommodation> accommodations		 = null;
 	private ArrayList<Other>         others              = null;
 	
 	public int getId() {
@@ -49,11 +49,11 @@ public class Travel {
 	public void setDescServiceNotIncluded(String descServiceNotIncluded) {
 		this.descServiceNotIncluded = descServiceNotIncluded;
 	}
-	public Date getTripDate() {
-		return tripDate;
+	public Date getTravelDate() {
+		return travelDate;
 	}
-	public void setTripDate(Date tripDate) {
-		this.tripDate = tripDate;
+	public void setTravelDate(Date travelDate) {
+		this.travelDate = travelDate;
 	}
 	public TravelType getTravelType() {
 		return travelType;
@@ -73,11 +73,11 @@ public class Travel {
 	public void setFlights(ArrayList<Flight> flights) {
 		this.flights = flights;
 	}
-	public ArrayList<Accommodation> getAccommodationTravel() {
-		return accommodationTravel;
+	public ArrayList<Accommodation> getAccommodations() {
+		return accommodations;
 	}
-	public void setAccommodationTravel(ArrayList<Accommodation> accommodationTravel) {
-		this.accommodationTravel = accommodationTravel;
+	public void setAccommodations(ArrayList<Accommodation> accommodations) {
+		this.accommodations = accommodations;
 	}
 	public ArrayList<Other> getOthers() {
 		return others;
@@ -87,8 +87,8 @@ public class Travel {
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(accommodationTravel, agency, descServiceNotIncluded, description, duration, flights, id,
-				name, others, travelType, tripDate);
+		return Objects.hash(accommodations, agency, descServiceNotIncluded, description, duration, flights, id,
+				name, others, travelType, travelDate);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -99,19 +99,19 @@ public class Travel {
 		if (getClass() != obj.getClass())
 			return false;
 		Travel other = (Travel) obj;
-		return Objects.equals(accommodationTravel, other.accommodationTravel) && Objects.equals(agency, other.agency)
+		return Objects.equals(accommodations, other.accommodations) && Objects.equals(agency, other.agency)
 				&& Objects.equals(descServiceNotIncluded, other.descServiceNotIncluded)
 				&& Objects.equals(description, other.description) && duration == other.duration
 				&& Objects.equals(flights, other.flights) && id == other.id && Objects.equals(name, other.name)
 				&& Objects.equals(others, other.others) && Objects.equals(travelType, other.travelType)
-				&& Objects.equals(tripDate, other.tripDate);
+				&& Objects.equals(travelDate, other.travelDate);
 	}
 	@Override
 	public String toString() {
 		return "Travel [id=" + id + ", duration=" + duration + ", name=" + name + ", description=" + description
-				+ ", descServiceNotIncluded=" + descServiceNotIncluded + ", tripDate=" + tripDate + ", travelType="
-				+ travelType + ", agency=" + agency + ", flights=" + flights + ", accommodationTravel="
-				+ accommodationTravel + ", others=" + others + "]";
+				+ ", descServiceNotIncluded=" + descServiceNotIncluded + ", tripDate=" + travelDate + ", travelType="
+				+ travelType + ", agency=" + agency + ", flights=" + flights + ", accommodations="
+				+ accommodations + ", others=" + others + "]";
 	}
 
 	

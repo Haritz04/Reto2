@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>NUEVO VIAJE</title>
+    <link rel="stylesheet" href="../css/mainStyle.css">
+    <link rel="stylesheet" href="../css/newTripStyle.css">
+</head>
+<body>
+    <form id="eventSection" action="events.php" method="post">
+        <!-- SECCIONES -->
+        <div id="travelSection">
+            <h5>Vuelo</h5>
+            <label for="XXXXXXX">Elige vuelo</label>
+            <select id="XXXXXXX" name="XXXXXXX" required>
+                <option value="">--Elegir--</option>
+                <!--<?php
+                //Desde la BASE DE DATOS
+                $conn = new mysqli("localhost", "root", "", "db_turismo");
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+                $sql = "SELECT id, name, travelDate, duration FROM travels";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['id'] . "'>" . $row['name'] . "'>" . $row['travelDate'] "'>" . $row['duration']"</option>";
+                    }
+                }
+                $conn->close();
+                ?> -->
+            </select>
+            <br><br>
+            <input type="submit" class="loginButton" value="GuardarServicio" onclick="selectFlights()">
+        </div>        
+    </form>
+    <script src="../js/main.js"></script>
+    <script src="../js/newTrip.js"></script>
+</body>
+</html>

@@ -10,10 +10,10 @@ public class Flight {
 	private double    price        = 0.0;
 	private String    code         = null;
 	private Airline   airline      = null;
-	private Timestamp startMoment  = null;
-	private Travel    travel       = null;
 	private Airport   airportStart = null;
 	private Airport   airportEnd   = null;
+	private Timestamp startMoment  = null;
+	private Travel    travel       = null;
 
 	public int getId() {
 		return id;

@@ -13,7 +13,7 @@ public class Accommodation {
 	private Travel   travel    = null;
 	private City     city      = null;
 	private RoomType roomType  = null;
-
+	
 	public int getId() {
 		return id;
 	}
@@ -22,11 +22,11 @@ public class Accommodation {
 		this.id = id;
 	}
 
-	public Travel getTrip() {
+	public Travel getTravel() {
 		return travel;
 	}
 
-	public void setTrip(Travel travel) {
+	public void setTravel(Travel travel) {
 		this.travel = travel;
 	}
 

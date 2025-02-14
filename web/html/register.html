@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>REGISTRATE</title>
+    <link rel="stylesheet" href="../css/mainStyle.css" />
+    <link rel="stylesheet" href="../css/registerStyle.css" />
+  </head>
+  <body>
+    <section>
+      <h1>REGISTRATE</h1>
+      <form action="../php/register.php" method="post">
+        <table>
+          <tr>
+            <td><label for="">Nombre: </label></td>
+            <td><input type="text" required name="name" /></td>
+          </tr>
+          <tr>
+            <td><label for="">Contraseña: </label></td>
+            <td><input type="password" required name="password" /></td>
+          </tr>
+          <tr>
+            <td><label for="">Confirmar contraseña: </label></td>
+            <td><input type="password" required name="password" /></td>
+          </tr>
+          <tr>
+            <td>
+            <label for="agencyType">Tipo de agencia:</label>
+            <select id="agencyType" name="agencyType" required>
+              <option value="A1">Mayorista</option>
+              <option value="A2">Minorista</option>
+              <option value="A3">Mayorista-Minorista</option>
+            </select>
+            </td>
+          </tr>
+          <tr>
+           <td>
+            <label for="logo">URL del Logo:</label>
+            <input
+              type="url"
+              id="logo"
+              name="logo"
+              placeholder="https://example.com/logo.png"
+              required
+            />
+          </td>
+          </tr>
+          <tr>
+            <td>
+            <h2>Elige un color:</h2>
+            <input type="color" name="color" id="colorPick" />
+          </td>
+          </tr>
+          <tr>
+            <td>
+            <label for="empleados">Cantidad de empleados:</label>
+            <select id="empleados" name="maxEmp" required>
+              <option value="1">10 empleados</option>
+              <option value="2">100 empleados</option>
+              <option value="3">1000 empleados</option>
+            </select>
+          </td>
+          </tr>
+        </table>
+        <br />
+        <div id="buttons">
+          <input type="submit" class="loginButton" value="Aceptar" />
+          <a href="../html/index.html">
+            <input type="button" class="loginButton" value="Cancelar" />
+          </a>
+        </div>
+      </form>
+    </section>
+    <script src="../js/main.js"></script>
+    <script src="../js/register.js"></script>
+  </body>
+</html>

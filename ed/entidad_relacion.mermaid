@@ -1,0 +1,115 @@
+---
+title: Base de datos
+---
+erDiagram
+    agencyTypes ||--o{ agencies : agencyType
+    maxEmployees ||--o{ agencies : maxEmployees
+    agencies ||--o{ travels : agency
+    travels ||--o{ accommodation : typeAccommodation
+    accommodation }o--|| roomTypes : typeOfRoom
+    accommodation }o--|| cities : fromCity
+    travels ||--o{ others : typeOther
+    travelTypes ||--o{ travels : travelType
+    flights }o--|| airports : airports
+    travels ||--o{ flights : flight
+    flights }o--|| airlines : airline
+    airports }o--|| cities : city
+    cities }o--|| countries : country
+    travels ||--o{ flightPairs : pair
+
+    agencyTypes {
+        INT id pk
+        VARCHAR(2) aid uk
+        VARCHAR(32) name uk
+    }
+    maxEmployees {
+        INT id pk
+        VARCHAR(2) aid uk
+        INT maxEmployees
+        VARCHAR(32) message
+    }
+    agencies {
+        INT id pk
+        INT idAgencyType fk
+        INT idMaxEmployees
+        VARCHAR(32) name
+        VARCHAR(32) password
+        VARCHAR(255) logo
+        VARCHAR(7) color
+    }
+    travelTypes {
+        INT id pk
+        VARCHAR(2) aid uk
+        VARCHAR(32) description uk
+    }
+    travels {
+        INT id pk
+        INT idTravelType fk
+        INT idAgency fk
+        VARCHAR(32) name
+        VARCHAR(512) description
+        DATE travelDate
+        INT duration
+        VARCHAR(512) descServiceNotIncluded
+    }
+    countries {
+        INT id pk
+        VARCHAR(2) aid uk
+        VARCHAR(32) name uk
+    }
+    cities {
+        INT id pk
+        INT idCountry fk
+        VARCHAR(32) name
+    }
+    roomTypes {
+        INT id pk
+        VARCHAR(3) aid uk
+        VARCHAR(32) name uk
+    }
+    accommodation {
+        INT id pk
+        INT idTravel fk
+        INT idCity fk
+        INT idRoomType fk
+        VARCHAR(32) name "Nombre del hotel"
+        NUMERIC price
+        DATE enterDate
+        DATE exitDate
+    }
+    flights {
+        INT id pk
+        INT idTravel fk
+        INT idAirportStart fk
+        INT idAirportEnd fk
+        INT idAirline fk
+        VARCHAR(9) code uk
+        NUMERIC price
+        TIMESTAMP startMoment
+        INT duration
+    }
+    flightPairs {
+        INT id pk
+        INT idTravel fk
+        INT idGoFlight fk
+        INT idReturnFlight fk
+    }
+    airlines {
+        INT id pk
+        VARCHAR(4) aid uk
+        VARCHAR(32) name
+    }
+    others {
+        INT id pk
+        INT idTravel fk
+        VARCHAR(32) name
+        DATE eventDate
+        VARCHAR(512) description
+        NUMERIC price
+    }
+    airports {
+        INT id pk
+        INT idCity fk
+        VARCHAR(3) aid uk
+        VARCHAR(32) name
+    }

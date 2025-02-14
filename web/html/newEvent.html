@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AÑADIR EVENTOS</title>
+    <link rel="stylesheet" href="../css/mainStyle.css" />
+    <link rel="stylesheet" href="../css/newEventStyle.css" />
+    <link rel="stylesheet" href="../css/menuStyle.css" />
+  </head>
+  <body onload="buttonsLoad()">
+    <header>
+      <div class="Enlaces">
+        <nav>
+          <a href="../html/menu.html">Atrás</a>
+        </nav>
+      </div>
+      <div class="Perfil">
+        <img src="" alt="" />
+      </div>
+    </header>
+
+    <div class="formularioEventos">
+      <div class="tipos">
+        <input
+          type="radio"
+          id="flightsBtn"
+          name="events"
+          value="Flights"
+          onchange="showFlights()"
+        />
+        <label for="html">Flights</label>
+
+        <input
+          type="radio"
+          id="accommodationBtn"
+          name="events"
+          value="Accommodation"
+          onchange="showAcommodation()"
+        />
+        <label for="html">Accommodation</label>
+
+        <input
+          type="radio"
+          id="otherBtn"
+          name="events"
+          value="Other"
+          onchange="showOthers()"
+        />
+        <label for="html">Other</label>
+
+        <div id="flightsDiv">
+          <form action="../php/save_events.php" method="post">
+            <table class="flights">
+              <!--INT id pk
+        INT idAirportStart fk
+        INT idAirportEnd fk
+        INT idAirline fk -->
+              <tr>
+                <td><label for="type">Aeropuerto de inicio: </label></td>
+                <td>
+                  <select id="airpoerStartSelect" name="airportStart" required>
+                    <option value="">--Elegir--</option>
+                    <?php
+                    //Desde la BASE DE DATOS
+                    $conn = new mysqli("localhost", "root", "", "db_turismo");
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+                    $sql = "SELECT aid, FROM airports";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<option value='" . $row['aid'] .</option>";
+                        }
+                    }
+                    $conn->close();
+                    ?>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="type">Aeropuerto final: </label></td>
+                <td>
+                  <select id="airportEndSelect" name="airportEnd" required>
+                    <option value="">--Elegir--</option>
+                    <?php
+                    //Desde la BASE DE DATOS
+                    $conn = new mysqli("localhost", "root", "", "db_turismo");
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+                    $sql = "SELECT aid, FROM airports";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<option value='" . $row['aid'] .</option>";
+                        }
+                    }
+                    $conn->close();
+                    ?>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="type">Aerolinea: </label></td>
+                <td>
+                  <select id="aerlineaSelect" name="airline" required>
+                    <option value="">--Elegir--</option>
+                    <?php
+                    //Desde la BASE DE DATOS
+                    $conn = new mysqli("localhost", "root", "", "db_turismo");
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+                    $sql = "SELECT aid, FROM airlines";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<option value='" . $row['aid'] .</option>";
+                        }
+                    }
+                    $conn->close();
+                    ?>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="type">Código: </label></td>
+                <td><input type="text" name="code" /></td>
+              </tr>
+              <tr>
+                <td><label for="start">Precio: </label></td>
+                <td><input type="number" name="Price" /></td>
+              </tr>
+              <tr>
+                <td><label for="days">Inicio: </label></td>
+                <td><input type="date" name="start" /></td>
+              </tr>
+              <tr>
+                <td><label for="days">Duración: </label></td>
+                <td><input type="number" name="duration" /></td>
+              </tr>
+            </table>
+            <div id="buttons">
+              <input
+                type="submit"
+                class="loginButton"
+                value="Guardar"
+                onclick="insertFlights()"
+              />
+            </div>
+          </form>
+        </div>
+        <div id="accommodationDiv">
+          <form action="../php/save_events.php" method="post">
+            <table class="accommodation">
+              <tr>
+                <td><label for="name">Nombre del hotel: </label></td>
+                <td><input type="text" name="name" /></td>
+              </tr>
+              <tr>
+                <td><label for="days">Precio: </label></td>
+                <td><input type="number" name="price_A" /></td>
+              </tr>
+              <tr>
+                <td><label for="start">Entrada: </label></td>
+                <td><input type="date" name="start" /></td>
+              </tr>
+              <tr>
+                <td><label for="end">Salida: </label></td>
+                <td><input type="date" name="exit" /></td>
+              </tr>
+            </table>
+            <div id="buttons">
+              <input
+                type="submit"
+                class="loginButton"
+                value="Guardar"
+                onclick="insertAccommodation()"
+              />
+            </div>
+          </form>
+        </div>
+        <div id="otherDiv">
+          <form action="../php/save_events.php" method="post">
+            <table class="others">
+              <tr>
+                <td><label for="name">Nombre: </label></td>
+                <td><input type="text" name="name_O" /></td>
+              </tr>
+              <tr>
+                <td><label for="start">Fecha de evento: </label></td>
+                <td><input type="date" name="date" /></td>
+              </tr>
+
+              <tr>
+                <td><label for="description">Descripción: </label></td>
+                <td><textarea name="description" rows="5"></textarea></td>
+              </tr>
+              <tr>
+                <td><label for="days">Precio: </label></td>
+                <td><input type="number" name="price_O" /></td>
+              </tr>
+            </table>
+            <div id="buttons">
+              <input
+                type="submit"
+                class="loginButton"
+                value="Guardar"
+                onclick="insertOthers()"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/newEvent.js"></script>
+  </body>
+</html>

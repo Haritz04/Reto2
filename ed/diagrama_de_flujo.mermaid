@@ -1,0 +1,203 @@
+---
+title: Diagrama de flujo del programa
+---
+flowchart TB
+    if_close{"
+        Se pulsa la X
+        de la ventana?
+    "} -- yes -->
+    fin_del_programa(["FIN"])
+    
+    inicio_del_programa(["INICIO"])
+    i_welcome["
+        Se muestra el
+        mensage de
+        bienvenida
+    "]
+    if_welcome{"
+        Pulsa
+        continuar?
+    "}
+    welcome_login(("LOGIN"))
+    
+    inicio_del_programa -->
+    i_welcome -->
+    if_welcome -- yes -->
+    welcome_login
+    
+    start_new_acount(("
+        NUEVA
+        CUENTA
+    ")) -->
+    i_new_acount[/"
+        Recoger datos de
+        la cuenta nueva.
+    "/] -->
+    db_new_acount[("
+        Insertar
+        los datos
+    ")] -->
+    new_acount_menu(("MENU"))
+    
+    start_login(("LOGIN"))
+    i_login["
+        Recoger datos de
+        nombre y contraseña
+    "]
+    if_login1{"
+        Pulsa botón
+        iniciar sesión?
+    "} 
+    if_login2{"
+        Pulsa botón
+        crear cuenta?
+    "} 
+    if_login3{"
+        Las credenciales
+        son correctas?
+    "}
+    db_consult_login[("
+        Consultar
+        los datos
+    ")]
+    p_login[/"
+        Imprimir:
+        Los datos no
+        son correctos.
+    "/]
+    login_new_acount(("
+        NUEVA
+        CUENTA
+    "))
+    login_menu(("MENU"))
+
+    start_login --> i_login -->
+    if_login1 -- yes -->
+    db_consult_login -->
+    if_login3 -- yes -->
+    login_menu
+    if_login3 -- no -->
+    p_login --> i_login
+    if_login1 -- no -->
+    if_login2 -- yes -->
+    login_new_acount
+    if_login2 -- no -->
+    i_login
+
+    start_menu(("MENU"))
+    p_menu[/"
+        Muestra todos los
+        viejes y eventos
+        de cada viaje.
+    "/]
+    if_menu1{"
+        Pulsa botón
+        nuevo viaje?
+    "}
+    if_menu2{"
+        Pulsa botón
+        nuevo evento?
+    "}
+     menu_new_trip(("
+         NUEVO
+         VIAJE
+     "))
+     menu_new_event(("
+         NUEVO
+         EVENTO
+     "))
+
+    start_menu -->
+    p_menu -->
+    if_menu1 -- yes -->
+    menu_new_trip
+    if_menu1 -- no -->
+    if_menu2 -- yes -->
+    menu_new_event
+    if_menu2 -- no -->
+    p_menu
+
+    new_trip(("
+        NUEVO
+        VIAJE
+    "))
+    i_trip[/"
+        Se recojes los datos
+        del nuevo viaje.
+    "/]
+    if_trip{"
+        Se pulsa el
+        botón guardar?
+    "}
+    db_trip[("
+        Guardar en BD
+        los datos.
+    ")]
+    trip_menu(("MENU"))
+
+    new_trip -->
+    i_trip -->
+    if_trip -- yes -->
+    db_trip -->
+    trip_menu
+    if_trip -- no -->
+    i_trip
+
+    new_event(("
+        NUEVO
+        EVENTO
+    "))
+    i_event[/"
+        Obtener datos
+        del evento.
+    "/]
+    i_event1[/"
+        Obtener datos
+        del evento
+        tipo 1.
+    "/]
+    i_event2[/"
+        Obtener datos
+        del evento
+        tipo 2.
+    "/]
+    i_event3[/"
+        Obtener datos
+        del evento
+        tipo 3.
+    "/]
+    if_event1{"
+        Evento de
+        tipo 1?
+    "}
+    if_event2{"
+        Evento de
+        tipo 2?
+    "}
+    if_event3{"
+        Evento de
+        tipo 3?
+    "}
+    db_event[("
+        Se guardan los
+        datos en la DB.
+    ")]
+    event_menu(("MENU"))
+
+    new_event -->
+    i_event -->
+    if_event1 -- yes -->
+    i_event1 -->
+    db_event
+    if_event1 -- no -->
+    if_event2 -- yes -->
+    i_event2 -->
+    db_event
+    if_event2 -- no -->
+    if_event3 -- yes -->
+    i_event3 -->
+    db_event
+    if_event3 -- no -->
+    i_event
+    db_event -->
+    event_menu

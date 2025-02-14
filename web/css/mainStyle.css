@@ -1,0 +1,30 @@
+body {
+    font-family: monospace;
+
+    color: #eee;
+    background-color: #111;
+
+    height: 100vh;
+
+    padding: 0px;
+    margin: 0px;
+}
+
+.loginButton {
+    background-color: #1111;
+
+    border: solid 2px #1111;
+    border-radius: 3px;
+
+    padding: 4px;
+    margin: 4px;
+}
+
+.loginButton:hover {
+    background-color: #eee1;
+
+    border: solid 2px #eee1;
+
+    padding: 8px;
+    margin: 0px;
+}

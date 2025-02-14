@@ -5,12 +5,13 @@ import java.util.ArrayList;
 
 public class Agency {
 	
-	private int        id           = 0;
-	private int        maxEmployees = 0;
-	private String     name         = null;
-	private String     logo         = null;
-	private String     color        = null;
-	private AgencyType agencyType   = null;
+	private int          id           = 0;
+	private String       name         = null;
+	private String       password     = null;
+	private String       logo         = null;
+	private String       color        = null;
+	private AgencyType   agencyType   = null;
+	private MaxEmployees maxEmployees = null;
 
 	private ArrayList<Travel> travels = null;
 
@@ -22,20 +23,20 @@ public class Agency {
 		this.id = id;
 	}
 
-	public int getMaxEmployees() {
-		return maxEmployees;
-	}
-
-	public void setMaxEmployees(int maxEmployees) {
-		this.maxEmployees = maxEmployees;
-	}
-
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getLogo() {
@@ -62,6 +63,14 @@ public class Agency {
 		this.agencyType = agencyType;
 	}
 
+	public MaxEmployees getMaxEmployees() {
+		return maxEmployees;
+	}
+
+	public void setMaxEmployees(MaxEmployees maxEmployees) {
+		this.maxEmployees = maxEmployees;
+	}
+
 	public ArrayList<Travel> getTravels() {
 		return travels;
 	}
@@ -72,7 +81,7 @@ public class Agency {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(agencyType, color, id, logo, maxEmployees, name, travels);
+		return Objects.hash(agencyType, color, id, logo, maxEmployees, name, password, travels);
 	}
 
 	@Override
@@ -85,13 +94,14 @@ public class Agency {
 			return false;
 		Agency other = (Agency) obj;
 		return Objects.equals(agencyType, other.agencyType) && Objects.equals(color, other.color) && id == other.id
-				&& Objects.equals(logo, other.logo) && maxEmployees == other.maxEmployees
-				&& Objects.equals(name, other.name) && Objects.equals(travels, other.travels);
+				&& Objects.equals(logo, other.logo) && Objects.equals(maxEmployees, other.maxEmployees)
+				&& Objects.equals(name, other.name) && Objects.equals(password, other.password)
+				&& Objects.equals(travels, other.travels);
 	}
 
 	@Override
 	public String toString() {
-		return "Agency [id=" + id + ", maxEmployees=" + maxEmployees + ", name=" + name + ", logo=" + logo + ", color="
-				+ color + ", agencyType=" + agencyType + ", travels=" + travels + "]";
+		return "Agency [id=" + id + ", name=" + name + ", password=" + password + ", logo=" + logo + ", color=" + color
+				+ ", agencyType=" + agencyType + ", maxEmployees=" + maxEmployees + ", travels=" + travels + "]";
 	}
 }

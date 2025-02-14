@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>EVENTOS</title>
+    <link rel="stylesheet" href="../css/mainStyle.css">
+    <link rel="stylesheet" href="../css/eventsStyle.css">
+    <link rel="stylesheet" href="../css/menuStyle.css">
+</head>
+<body>
+    <header>
+        <div class="Enlaces">
+            <nav>
+                <a href="../html/menu.html">Atrás</a>
+            </nav>
+        </div>
+        <div class="Perfil">
+            <h4><!-- <?php echo $_SESSION['agency']; ?> --></h4>
+            <img src="" alt="">
+        </div>
+    </header>
+    <div class="tipos">            
+        <input type="radio" id="flightsBtn" name="events" value="Flights" onchange="showFlights()">
+        <label for="html">Flights</label>
+        
+        <input type="radio" id="accommodationBtn" name="events" value="Accommodation" onchange="showAcommodation()">
+        <label for="html">Accommodation</label>
+        
+        <input type="radio" id="otherBtn" name="events" value="Other" onchange="showOthers()">
+        <label for="html">Other</label>
+
+    <form id="eventSection" action="events.php" method="post">
+            <!-- SECCIONES -->
+            <div id="flightSection">
+                <h5>Vuelo</h5>
+                <label for="XXXXXXX">Elegir viaje</label>
+                <select id="XXXXXXX" name="XXXXXXX" required>
+                    <option value="">--Elegir--</option>
+                    <!--<?php
+                    //Desde la BASE DE DATOS
+                    $conn = new mysqli("localhost", "root", "", "db_turismo");
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+                    $sql = "SELECT id, code FROM flight";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<option value='" . $row['aid'] . "'>" . $row['code'] . "</option>";
+                        }
+                    }
+                    $conn->close();
+                    ?> -->
+                </select>
+                <br><br>
+                <input type="submit" class="loginButton" value="GuardarServicio" onclick="selectFlights()">
+            </div>
+
+            <div id="hotelSection">
+                <h5>Alojaminetos</h5>
+                <label for="XXXXXXX">Elegir Alojamientos</label>
+                <select id="room_type" name="room_type" required>
+                    <option value="">--Elige --</option>
+                    <!--<?php
+                    // Desde la BASE DE DATOS
+                    $conn = new mysqli("localhost", "root", "", "db_turismo");
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+                    $sql = "SELECT aid, name FROM roomType"; 
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<option value='" . $row['aid'] . "'>" . $row['name'] . "</option>";
+                        }
+                    }
+                    $conn->close();
+                    ?> -->
+                </select>
+                <br><br>
+                <input type="submit" class="loginButton" value="GuardarServicio" onclick="selectAccommodation()">
+            </div>
+
+            <div id="otherSection">
+                <h5>Otros</h5>
+                <label for="XXXXXXX">Elegir Otro</label>
+                <select id="XXXXXXX" name="XXXXXXX" required>
+                    <option value="">--Elige --</option>
+                <!--<?php
+                // Desde la BASE DE DATOS
+                $conn = new mysqli("localhost", "root", "", "db_turismo");
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+                $sql = "SELECT id, description FROM others"; 
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . $row['id'] . "'>" . $row['description'] . "</option>";
+                    }
+                }
+                $conn->close();
+                ?> -->
+            </div>
+            <br><br>
+            <input type="submit" class="loginButton" value="GuardarServicio" onclick="selectOthers()">
+        </form>
+    </div>
+          
+    </main>
+    <footer>
+        <div class="Enlaces">
+            <nav>
+                <a href="../html/menu.html">Atrás</a>
+                <a href="XXXXXXX.php">XXXXXXX</a>
+                <a href="XXXXXXX.php">XXXXXXX</a>
+            </nav>
+        </div>
+
+        <!-- Hacer un footer -->
+
+    </footer>
+<script src="../js/main.js"></script>
+<script src="../js/events.js"></script>
+</body>
+</html>
